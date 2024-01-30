@@ -1,0 +1,1 @@
+Pasta para alujar a parte de backoffice para os admins dos eventos
