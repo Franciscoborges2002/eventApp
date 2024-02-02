@@ -1,7 +1,9 @@
 version: '3.8'
+
 name: event_app
+
 services:
-  db:
+  db-postgres:
     container_name: database
     image: postgres:14.1-alpine
     restart: always
@@ -12,6 +14,21 @@ services:
       - '5432:5432'
     volumes: 
       - db:/var/lib/postgresql/data
+  pgadmin-compose:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "PgAdmin2019!"
+    ports:
+      - "16543:80"
+    depends_on:
+      - db-postgres
+    networks:
+      - postgres-compose-network
+
+networks: 
+  postgres-compose-network:
+    driver: bridge
 volumes:
   db:
     driver: local
