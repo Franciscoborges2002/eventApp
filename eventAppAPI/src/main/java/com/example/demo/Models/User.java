@@ -3,7 +3,8 @@ package com.example.demo.Models;
 import com.example.demo.Enums.TypeUser;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.UuidGenerator;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import java.util.UUID;
 
@@ -24,9 +25,20 @@ public class User {
             strategy = GenerationType.SEQUENCE,
             generator = "user_sequence"
     )*/
+    //This type create an UUID from IP and timestamp can see in this link: https://thorben-janssen.com/generate-uuids-primary-keys-hibernate/
     @Id
-    @GeneratedValue
-    @UuidGenerator
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator",
+            parameters = {
+                    @Parameter(
+                            name = "uuid_gen_strategy_class",
+                            value = "org.hibernate.id.uuid.CustomVersionOneStrategy"
+                    )
+            }
+    )
+    @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
 
     @Column(nullable = false, unique = true)
