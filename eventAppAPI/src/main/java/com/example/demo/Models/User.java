@@ -3,6 +3,9 @@ package com.example.demo.Models;
 import com.example.demo.Enums.TypeUser;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.UuidGenerator;
+
+import java.util.UUID;
 
 @Entity
 @Table(name="\"user\"" )
@@ -11,7 +14,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-    @Id
+    /*@Id
     @SequenceGenerator(
             name = "user_sequence",
             sequenceName = "user_sequence",
@@ -20,8 +23,11 @@ public class User {
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
             generator = "user_sequence"
-    )
-    private Long id;
+    )*/
+    @Id
+    @GeneratedValue
+    @UuidGenerator
+    private UUID id;
 
     @Column(nullable = false, unique = true)
     private String name;

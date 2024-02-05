@@ -7,49 +7,50 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
-@RequestMapping(path = "utilizador")
+@RequestMapping(path = "user")
 public class UserController {
     private final UserService userService;
 
     @Autowired
-    public UserController(UserService utilizadorService) {
-        this.userService = utilizadorService;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping
-    public List<User> getUtilizadores() {
+    public List<User> getUsers() {
         return userService.getUsers();
     }
 
-    @GetMapping(path = "{utilizadorId}")
-    public User getUtilizadorById(@PathVariable("utilizadorId") Long id) {
+    @GetMapping(path = "{userId}")
+    public User getUsersById(@PathVariable("userId") UUID id) {
         return userService.getUserById(id);
     }
 
-    @GetMapping(path = "tipo/{tipoUtilizador}")
-    public User getUtilizadorByType(@PathVariable String tipoUtilizador) {
+    @GetMapping(path = "type/{typeUser}")
+    public User getUsersByType(@PathVariable String typeUser) {
 
         //Verificar se a string vinda existe no TipoUtilizador
-        return userService.getUserByType(tipoUtilizador);
+        return userService.getUserByType(typeUser);
     }
 
     @PostMapping
-    public void registarNo(@RequestBody User utilizador) {
+    public void addUser(@RequestBody User user) {
         System.out.println("A receber utikizador par acriar");
-        userService.addUser(utilizador);
+        userService.addUser(user);
     }
 
-    @DeleteMapping(path = "{utilizadorId}")
-    public void deleteUtilizador(@PathVariable("utilizadorId") Long id) {
+    @DeleteMapping(path = "{userId}")
+    public void deleteUser(@PathVariable("userId") UUID id) {
         System.out.println("A receber utikizador par eliminar");
         userService.deleteUser(id);
     }
 
-    @PutMapping(path = "{utilizadorId}")//Receber utilizador inteiro do frontend
-    public void updateUtilizador(@PathVariable("utilizadorId") Long id, @RequestBody User utilizador) {
+    @PutMapping(path = "{userId}")//Receber utilizador inteiro do frontend
+    public void updateUser(@PathVariable("userId") UUID id, @RequestBody User user) {
         System.out.println("A receber utikizador par mudar");
-        userService.updateUser(id, utilizador);
+        userService.updateUser(id, user);
     }
 }

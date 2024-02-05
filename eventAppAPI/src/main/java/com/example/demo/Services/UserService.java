@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 
 @Service
@@ -21,7 +22,7 @@ public class UserService {
         this.userRepository = utilizadorRepository;
     }
 
-    public User getUserById(Long id) {
+    public User getUserById(UUID id) {
         Optional<User> utilizadorById = userRepository.findById(id);
 
         if (!utilizadorById.isPresent()) {
@@ -76,7 +77,7 @@ public class UserService {
         userRepository.save(utilizador);
     }
 
-    public void deleteUser(Long id) {
+    public void deleteUser(UUID id) {
         boolean bool = userRepository.existsById(id);
 
         if (!bool) {
@@ -88,7 +89,7 @@ public class UserService {
     }
 
     @Transactional
-    public void updateUser(Long id, User utilizador) {
+    public void updateUser(UUID id, User utilizador) {
 
     }
 }
