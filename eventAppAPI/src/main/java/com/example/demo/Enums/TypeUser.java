@@ -1,6 +1,6 @@
 package com.example.demo.Enums;
 
-public enum TipoUtilizador {
+public enum TypeUser {
     VISITANTE,
     COLABORADOR,
     REPRESENTANTE,
