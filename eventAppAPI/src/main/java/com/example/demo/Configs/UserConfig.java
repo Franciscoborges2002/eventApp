@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 public class UserConfig {
 
     @Bean
-    CommandLineRunner inicializarUtilizador(UserRepository repository) {
+    CommandLineRunner initiateUser(UserRepository repository) {
         return args -> {
             User user = new User();
             user.setName("Francisco");
