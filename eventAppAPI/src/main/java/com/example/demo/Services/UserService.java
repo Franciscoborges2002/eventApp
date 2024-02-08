@@ -1,5 +1,6 @@
 package com.example.demo.Services;
 
+import com.example.demo.Enums.TypeUser;
 import com.example.demo.Models.User;
 import com.example.demo.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,8 @@ public class UserService {
         return utilizadorById.get();
     }
 
-    public User getUserByType(String tipoUtilizador) {
-        Optional<User> utilizadores = userRepository.findUtilizadorByTipoUtilizador(tipoUtilizador);
+    public User getUserByType(TypeUser typeUser) {
+        Optional<User> utilizadores = userRepository.findUserByUserType(typeUser);
 
         return utilizadores.get();
 
@@ -45,19 +46,19 @@ public class UserService {
 
 
     public void addUser(User utilizador) {//Servico para receber o post do controller
-        Optional<User> utilizadorByNome = userRepository.findUtilizadorByNome(utilizador.getName());
+        Optional<User> utilizadorByNome = userRepository.findUserByName(utilizador.getName());
 
         if (utilizadorByNome.isPresent()) {
             throw new IllegalStateException("Ja existe um utilizador com esse nome!");
         }
 
-        Optional<User> utilizadorByEmail = userRepository.findUtilizadorByEmail(utilizador.getEmail());
+        Optional<User> utilizadorByEmail = userRepository.findUserByEmail(utilizador.getEmail());
 
         if (utilizadorByEmail.isPresent()) {
             throw new IllegalStateException("Ja existe um utilizador com esse email!");
         }
 
-        Optional<User> utilizadorByNomeMostrar = userRepository.findUtilizadorByNomeMostrar(utilizador.getShowName());
+        Optional<User> utilizadorByNomeMostrar = userRepository.findUserByShowName(utilizador.getShowName());
 
         if (utilizadorByNomeMostrar.isPresent()) {
             throw new IllegalStateException("Ja existe um utilizador com esse NomeMostrar????!");

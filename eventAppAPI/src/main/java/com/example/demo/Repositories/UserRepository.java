@@ -1,5 +1,6 @@
 package com.example.demo.Repositories;
 
+import com.example.demo.Enums.TypeUser;
 import com.example.demo.Models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -10,15 +11,15 @@ import java.util.UUID;
 public interface UserRepository extends JpaRepository<User, UUID> {
 
     @Query("Select p FROM User p WHERE p.name = ?1")
-    Optional<User> findUtilizadorByNome(String nome);
+    Optional<User> findUserByName(String name);
 
     @Query("Select p FROM User p WHERE p.email = ?1")
-    Optional<User> findUtilizadorByEmail(String email);
+    Optional<User> findUserByEmail(String email);
 
     @Query("Select p FROM User p WHERE p.showName = ?1")
-    Optional<User> findUtilizadorByNomeMostrar(String nomeMostrar);
+    Optional<User> findUserByShowName(String showName);
 
     @Query("Select p FROM User p WHERE p.typeUser = ?1")
-    Optional<User> findUtilizadorByTipoUtilizador(String tipoUtilizador);
+    Optional<User> findUserByUserType(TypeUser typeUser);
 
 }
