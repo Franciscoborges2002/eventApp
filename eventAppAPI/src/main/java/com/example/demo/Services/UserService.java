@@ -24,20 +24,20 @@ public class UserService {
     }
 
     public User getUserById(UUID id) {
-        Optional<User> utilizadorById = userRepository.findById(id);
+        Optional<User> userById = userRepository.findById(id);
 
-        if (!utilizadorById.isPresent()) {
+        if (!userById.isPresent()) {
             throw new IllegalStateException("Não existe utilizador com esse id");
         }
 
-        return utilizadorById.get();
+        return userById.get();
     }
 
-    public User getUserByType(TypeUser typeUser) {
-        Optional<User> utilizadores = userRepository.findUserByUserType(typeUser);
+    //Nao sei se isto funciona verificar
+    public List<User> getUserByType(String typeUser) {
+        Optional<User> users = userRepository.findUsersByTypeUser(typeUser);
 
-        return utilizadores.get();
-
+        return users.stream().toList();
     }
 
     public List<User> getUsers() {
@@ -45,26 +45,26 @@ public class UserService {
     }
 
 
-    public void addUser(User utilizador) {//Servico para receber o post do controller
-        Optional<User> utilizadorByNome = userRepository.findUserByName(utilizador.getName());
+    public void addUser(User user) {//Servico para receber o post do controller
+        Optional<User> userByNome = userRepository.findUserByName(user.getName());
 
-        if (utilizadorByNome.isPresent()) {
+        if (userByNome.isPresent()) {
             throw new IllegalStateException("Ja existe um utilizador com esse nome!");
         }
 
-        Optional<User> utilizadorByEmail = userRepository.findUserByEmail(utilizador.getEmail());
+        Optional<User> userByEmail = userRepository.findUserByEmail(user.getEmail());
 
-        if (utilizadorByEmail.isPresent()) {
+        if (userByEmail.isPresent()) {
             throw new IllegalStateException("Ja existe um utilizador com esse email!");
         }
 
-        Optional<User> utilizadorByNomeMostrar = userRepository.findUserByShowName(utilizador.getShowName());
+        Optional<User> userByShowName = userRepository.findUserByShowName(user.getShowName());
 
-        if (utilizadorByNomeMostrar.isPresent()) {
+        if (userByShowName.isPresent()) {
             throw new IllegalStateException("Ja existe um utilizador com esse NomeMostrar????!");
         }
 
-        if(utilizador.getPassword() == null ||  utilizador.getTypeUser() == null) {//Verificar se existe password e tipo de utilizador
+        if(user.getPassword() == null ||  user.getTypeUser() == null) {//Verificar se existe password e tipo de utilizador
             throw new IllegalStateException("Existem valores nulos!");
         }
 
@@ -75,7 +75,7 @@ public class UserService {
 
         //utilizador.setPassword(hashedPassword);
 
-        userRepository.save(utilizador);
+        userRepository.save(user);
     }
 
     public void deleteUser(UUID id) {
@@ -90,7 +90,7 @@ public class UserService {
     }
 
     @Transactional
-    public void updateUser(UUID id, User utilizador) {
+    public void updateUser(UUID id, User user) {
 
     }
 }

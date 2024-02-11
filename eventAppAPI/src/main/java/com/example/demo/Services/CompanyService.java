@@ -28,19 +28,41 @@ public class CompanyService {
         Optional<Company> companyById = companyRepository.findById(id);
 
         if (!companyById.isPresent()) {
-            throw new IllegalStateException("Não existe utilizador com esse id");
+            throw new IllegalStateException("Não existe empresa com esse id");
         }
 
         return companyById.get();
     }
 
-    public Company getCompanyByType(TypeContract typeContract){
+    public Company getCompanyByContractType(TypeContract typeContract){
         Optional<Company> companyByContract = companyRepository.findCompanyByTypeContracy(typeContract);
 
         return companyByContract.get();
     }
 
     public void addCompany(Company company){
+        Optional<Company> companyByName = companyRepository.findCompanyByName(company.getName());
+
+        if (companyByName.isPresent()) {
+            throw new IllegalStateException("Ja existe uma empresa com esse nome!");
+        }
+
+        //So foi feita a verificacao do nome, depois qualquer coisa e so editar a empresa
+
+        companyRepository.save(company);
+    }
+
+    public void deleteCompany(UUID id){
+        boolean bool = companyRepository.existsById(id);
+
+        if (!bool) {
+            throw new IllegalStateException(("Não existe nenhuma empresa com esse Id"));
+        }
+
+        companyRepository.deleteById(id);
+    }
+
+    public void updateCompany(UUID id, Company company){
 
     }
 }

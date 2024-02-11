@@ -4,6 +4,7 @@ package com.example.demo.Controllers;
 import com.example.demo.Models.User;
 import com.example.demo.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,13 +31,13 @@ public class UserController {
     }
 
     @GetMapping(path = "type/{typeUser}")
-    public User getUsersByType(@PathVariable String typeUser) {
-
+    public List<User> getUsersByType(@PathVariable String typeUser) {
         //Verificar se a string vinda existe no TipoUtilizador
         return userService.getUserByType(typeUser);
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public void addUser(@RequestBody User user) {
         System.out.println("A receber utikizador par acriar");
         userService.addUser(user);

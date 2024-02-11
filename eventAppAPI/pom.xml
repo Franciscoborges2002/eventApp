@@ -12,7 +12,7 @@
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>eventApp</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Event App for TSI 2 MARKET</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>

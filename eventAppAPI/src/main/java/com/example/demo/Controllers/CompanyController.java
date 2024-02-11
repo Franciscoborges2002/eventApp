@@ -31,11 +31,11 @@ public class CompanyController {
         return companyService.getCompanyById(id);
     }
 
-    @GetMapping(path = "type/{typeCompany}")
-    public Company getUsersByType(@PathVariable TypeContract typeCompany) {
+    @GetMapping(path = "type/{typeContract}")
+    public Company getUsersByType(@PathVariable TypeContract typeContract) {
 
         //Verificar se a string vinda existe no TipoUtilizador
-        return companyService.getCompanyByType(typeCompany);
+        return companyService.getCompanyByContractType(typeContract);
     }
 
     @PostMapping
@@ -53,6 +53,6 @@ public class CompanyController {
     @PutMapping(path = "{companyId}")//Receber utilizador inteiro do frontend
     public void updateUser(@PathVariable("companyId") UUID id, @RequestBody Company company) {
         System.out.println("A receber utikizador par mudar");
-        companyService.updateUser(id, user);
+        companyService.updateCompany(id, company);
     }
 }
