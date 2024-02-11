@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
@@ -52,6 +53,16 @@ public class Activity {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(updatable = false, nullable = false)
     private Date dateTimeActivity;
+
+    // Relation to activity
+    @Column(name = "validations")
+    @OneToMany(mappedBy = "activity_id")
+    private ArrayList<Validation> validations;
+
+    // Relation to Review
+    @Column(name = "reviews")
+    @OneToMany(mappedBy = "review_id")
+    private ArrayList<Review> reviews;
 
     //@Column(nullable = false, unique = true)
     //private List speakers;
