@@ -59,4 +59,9 @@ public class Visitor extends User {
     @OneToMany(mappedBy = "review_id")
     private ArrayList<Review> reviews;
 
+    // Relation to Interaction
+    @Column(name = "interaction")
+    @OneToMany(mappedBy = "interaction_id")
+    private ArrayList<Interaction> interactions;
+
 }

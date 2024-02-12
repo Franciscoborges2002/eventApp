@@ -46,7 +46,8 @@ public class ReviewService {
             throw new IllegalStateException(("Not exists any badge with that id!"));
         }
 
-        reviewRepository.deleteById(id);
+        reviewRepository
+                .deleteById(id);
     }
 
     public void updateReview(UUID id, Review review) {

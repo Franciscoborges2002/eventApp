@@ -3,6 +3,7 @@ package com.example.demo.Controllers;
 import com.example.demo.Enums.TypeContract;
 import com.example.demo.Models.Company;
 import com.example.demo.Models.User;
+import com.example.demo.Models.Visitor;
 import com.example.demo.Services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -55,4 +56,12 @@ public class CompanyController {
         System.out.println("A receber utikizador par mudar");
         companyService.updateCompany(id, company);
     }
+
+    //Get the users who visit the company
+    @GetMapping(path = "{companyId}/visitors")
+    public List<Visitor> getVisitorsByCompany(@PathVariable("companyId") UUID id) {
+
+        return companyService.getVisitorsByCompany(id);
+    }
+
 }
