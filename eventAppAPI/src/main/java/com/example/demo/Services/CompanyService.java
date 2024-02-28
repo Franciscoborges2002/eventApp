@@ -35,7 +35,7 @@ public class CompanyService {
     }
 
     public Company getCompanyByContractType(TypeContract typeContract){
-        Optional<Company> companyByContract = companyRepository.findCompanyByTypeContracy(typeContract);
+        Optional<Company> companyByContract = companyRepository.findCompanyByTypeContract(typeContract);
 
         return companyByContract.get();
     }

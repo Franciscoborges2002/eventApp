@@ -1,6 +1,5 @@
 package com.example.demo.Services;
 
-import com.example.demo.Enums.TypeUser;
 import com.example.demo.Models.User;
 import com.example.demo.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +34,10 @@ public class UserService {
 
     //Nao sei se isto funciona verificar
     public List<User> getUserByType(String typeUser) {
-        Optional<User> users = userRepository.findUsersByTypeUser(typeUser);
+        //Optional<User> users = userRepository.findUsersByTypeUser(typeUser);
 
-        return users.stream().toList();
+        //return users.stream().toList();
+        return null;
     }
 
     public List<User> getUsers() {

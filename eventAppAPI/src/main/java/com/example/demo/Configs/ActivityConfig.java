@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ActivityConfig {
     @Bean
-    CommandLineRunner initiateCompany(ActivityRepository repository) {
+    CommandLineRunner initiateActivity(ActivityRepository repository) {
         return args -> {
             Activity activity = new Activity();
             //activity.setName("Agap2it");
