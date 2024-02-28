@@ -8,18 +8,16 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name="activity")
+@Table(name="interaction" )
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Activity {
-
+public class Interaction {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
@@ -35,35 +33,19 @@ public class Activity {
     @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
 
-    @Column(nullable = false, unique = true)
-    private String name;
-
-    @Column(nullable = true, unique = false)
-    private String localization;
-
-    @Column(nullable = false, unique = true)
-    private int numParticipants;
-
-    @Column(nullable = false, unique = true)
-    private boolean required;
-
-    @Column(nullable = false, unique = true)
-    private int maxNumParticipants;
-
     @Temporal(TemporalType.TIMESTAMP)
     @Column(updatable = false, nullable = false)
-    private Date dateTimeActivity;
+    private Date interactionDateTime;
 
-    // Relation to activity
-    @Column(name = "validations")
-    @OneToMany(mappedBy = "activity_id")
-    private ArrayList<Validation> validations;
+    //Add company connection
+    @Column(name="company")
+    @ManyToOne
+    @JoinColumn(name="company_id", nullable=false)
+    private Company company;
 
-    // Relation to Review
-    @Column(name = "reviews")
-    @OneToMany(mappedBy = "review_id")
-    private ArrayList<Review> reviews;
-
-    //@Column(nullable = false, unique = true)
-    //private List speakers;
+    // Add Visitor
+    @Column(name="visitor")
+    @ManyToOne
+    @JoinColumn(name="visitor_id", nullable=false)
+    private Visitor visitor;
 }

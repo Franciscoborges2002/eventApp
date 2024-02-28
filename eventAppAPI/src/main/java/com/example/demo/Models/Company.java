@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -70,6 +71,11 @@ public class Company {
 
     /*@Column(nullable = false, unique = false)
     private String keywords;*/
+
+    // Relation to Interaction
+    @Column(name = "interaction")
+    @OneToMany(mappedBy = "interaction_id")
+    private ArrayList<Interaction> interactions;
 
     //it remains do the connection to collaborators
 }

@@ -1,10 +1,19 @@
 package com.example.demo.Models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Inheritance;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public class Visitor {
+import java.util.ArrayList;
+@Entity
+@Table(name="\"visitor\"" )
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Visitor extends User {
     @Column(name="pontos")
     private int points;
     @Column(name="linkedin")
@@ -29,4 +38,30 @@ public class Visitor {
     private boolean isMember;
     @Column(name="atingiuBonificacao")
     private boolean reachedBonus;
+
+    // relation to Badget
+    @Column(name="badgets")
+    @OneToMany
+    @JoinTable(
+            name = "visitor_badges",
+            joinColumns = @JoinColumn(name = "visitor_id"),
+            inverseJoinColumns = @JoinColumn(name = "badge_id")
+    )
+    private ArrayList<Badge> badges;
+
+    // relation to Validations
+    @Column(name = "validations")
+    @OneToMany(mappedBy = "visitor_id")
+    private ArrayList<Validation> validations;
+
+    // Relation to Review
+    @Column(name = "reviews")
+    @OneToMany(mappedBy = "review_id")
+    private ArrayList<Review> reviews;
+
+    // Relation to Interaction
+    @Column(name = "interaction")
+    @OneToMany(mappedBy = "interaction_id")
+    private ArrayList<Interaction> interactions;
+
 }

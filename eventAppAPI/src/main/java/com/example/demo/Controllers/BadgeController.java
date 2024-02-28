@@ -25,7 +25,7 @@ public class BadgeController {
     }
 
     @GetMapping(path = "{badgeId}")
-    public Badge getBadgeById(@PathVariable("companyId") UUID id) {
+    public Badge getBadgeById(@PathVariable("badgeId") UUID id) {
         return badgeService.getBadgeById(id);
     }
 
