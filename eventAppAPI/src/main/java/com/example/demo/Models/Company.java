@@ -33,10 +33,10 @@ public class Company {
                     )
             }
     )
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "id", updatable = false)
     private UUID id;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String name;
 
     @Column(nullable = true, unique = false)
@@ -69,12 +69,11 @@ public class Company {
     @Column(nullable = true, unique = true)
     private String positionStand;
 
-    /*@Column(nullable = false, unique = false)
+    /*@Column(, unique = false)
     private String keywords;*/
 
     // Relation to Interaction
-    @Column(name = "interaction")
-    @OneToMany(mappedBy = "interaction_id")
+    @OneToMany(mappedBy = "company")
     private ArrayList<Interaction> interactions;
 
     //it remains do the connection to collaborators

@@ -2,11 +2,8 @@ package com.example.demo.Controllers;
 
 import com.example.demo.Enums.TypeContract;
 import com.example.demo.Models.Company;
-<<<<<<< HEAD
-=======
 import com.example.demo.Models.User;
 import com.example.demo.Models.Visitor;
->>>>>>> 5d2ed4c271c279888b2f8c0ccf82b69894ed0e42
 import com.example.demo.Services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

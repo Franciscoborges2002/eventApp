@@ -30,33 +30,27 @@ public class Validation {
                     )
             }
     )
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "id", updatable = false)
     private UUID id;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false)
     private Date validationDateTime;
 
     //Add activity connection
-    @Column(name="activity")
     @ManyToOne
-    @JoinColumn(name="activity_id", nullable=false)
+    @JoinColumn(name="activity_id")
     private Activity activity;
 
-<<<<<<< HEAD
 
     //Add user connection
-=======
     // Add Visitor
-    @Column(name="visitor")
     @ManyToOne
-    @JoinColumn(name="visitor_id", nullable=false)
+    @JoinColumn(name="visitor_id")
     private Visitor visitor;
->>>>>>> 5d2ed4c271c279888b2f8c0ccf82b69894ed0e42
 
     //Add person who read the qr cod | collaborator connection
-    @Column(name="collaborator")
     @ManyToOne
-    @JoinColumn(name="collaborator_id", nullable=false)
+    @JoinColumn(name="collaborator_id")
     private Collaborator collaborator;
 }

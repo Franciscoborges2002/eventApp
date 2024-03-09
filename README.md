@@ -1,1 +1,1 @@
-Repositorio para alujar todos a estrutura da aplicacao de eventos
+Repositorio para alujar todos o codigo da aplicacao de eventos

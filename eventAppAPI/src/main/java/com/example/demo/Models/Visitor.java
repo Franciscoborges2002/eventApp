@@ -8,7 +8,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 @Entity
-@Table(name="\"visitor\"" )
+@Table(name="visitor" )
 @Getter
 @Setter
 @AllArgsConstructor
@@ -40,28 +40,23 @@ public class Visitor extends User {
     private boolean reachedBonus;
 
     // relation to Badget
-    @Column(name="badgets")
-    @OneToMany
+    @ManyToMany
     @JoinTable(
-            name = "visitor_badges",
+            name = "badges_visitor",
             joinColumns = @JoinColumn(name = "visitor_id"),
-            inverseJoinColumns = @JoinColumn(name = "badge_id")
-    )
+            inverseJoinColumns = @JoinColumn(name = "badge_id"))
     private ArrayList<Badge> badges;
 
     // relation to Validations
-    @Column(name = "validations")
-    @OneToMany(mappedBy = "visitor_id")
+    @OneToMany(mappedBy = "visitor")
     private ArrayList<Validation> validations;
 
     // Relation to Review
-    @Column(name = "reviews")
-    @OneToMany(mappedBy = "review_id")
+    @OneToMany(mappedBy = "visitor")
     private ArrayList<Review> reviews;
 
     // Relation to Interaction
-    @Column(name = "interaction")
-    @OneToMany(mappedBy = "interaction_id")
+    @OneToMany(mappedBy = "visitor")
     private ArrayList<Interaction> interactions;
 
 }

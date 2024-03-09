@@ -32,38 +32,36 @@ public class Activity {
                     )
             }
     )
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "id", updatable = false)
     private UUID id;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String name;
 
     @Column(nullable = true, unique = false)
     private String localization;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private int numParticipants;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private boolean required;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private int maxNumParticipants;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(updatable = false, nullable = false)
-    private Date dateTimeActivity;
+    @Column(updatable = false)
+    private Date create_at;
 
     // Relation to activity
-    @Column(name = "validations")
-    @OneToMany(mappedBy = "activity_id")
+    @OneToMany(mappedBy = "activity")
     private ArrayList<Validation> validations;
 
     // Relation to Review
-    @Column(name = "reviews")
-    @OneToMany(mappedBy = "review_id")
+    @OneToMany(mappedBy = "activity")
     private ArrayList<Review> reviews;
 
-    //@Column(nullable = false, unique = true)
+    //@Column(, unique = true)
     //private List speakers;
 }

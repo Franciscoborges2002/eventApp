@@ -3,7 +3,7 @@ package com.example.demo.Services;
 import com.example.demo.Models.User;
 import com.example.demo.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +16,6 @@ import java.util.UUID;
 public class UserService {
 
     private final UserRepository userRepository;
-
     @Autowired
     public UserService(UserRepository utilizadorRepository){
         this.userRepository = utilizadorRepository;
@@ -46,6 +45,9 @@ public class UserService {
 
 
     public void addUser(User user) {//Servico para receber o post do controller
+        if(user.getName() == null  || user.getEmail() == null ||  user.getPassword() == null ||  user.getTypeUser() == null) {//Verificar se existe password e tipo de utilizador
+            throw new IllegalStateException("Existem valores nulos!");
+        }
         Optional<User> userByNome = userRepository.findUserByName(user.getName());
 
         if (userByNome.isPresent()) {
@@ -64,16 +66,12 @@ public class UserService {
             throw new IllegalStateException("Ja existe um utilizador com esse NomeMostrar????!");
         }
 
-        if(user.getPassword() == null ||  user.getTypeUser() == null) {//Verificar se existe password e tipo de utilizador
-            throw new IllegalStateException("Existem valores nulos!");
-        }
-
         /* METER A PASSWORD EM HASH ANTES DE GUARDAR NA BD */
-        //BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-        //String hashedPassword = passwordEncoder.encode(utilizador.getPassword());
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
 
-        //utilizador.setPassword(hashedPassword);
+        user.setPassword(hashedPassword);
 
         userRepository.save(user);
     }

@@ -30,22 +30,20 @@ public class Interaction {
                     )
             }
     )
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "id", updatable = false)
     private UUID id;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false)
     private Date interactionDateTime;
 
     //Add company connection
-    @Column(name="company")
     @ManyToOne
-    @JoinColumn(name="company_id", nullable=false)
+    @JoinColumn(name="company_id")
     private Company company;
 
     // Add Visitor
-    @Column(name="visitor")
     @ManyToOne
-    @JoinColumn(name="visitor_id", nullable=false)
+    @JoinColumn(name="visitor_id")
     private Visitor visitor;
 }

@@ -38,16 +38,16 @@ public class User {
                     )
             }
     )
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "id", updatable = false)
     private UUID id;
 
-    @Column(nullable = false, unique = false)
+    @Column(unique = false)
     private String name;
 
-    @Column(nullable = false, unique = false)
+    @Column(unique = false)
     private String password;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String email;
     @Column(nullable = true, unique = true)
     private String linkPhoto;
@@ -55,6 +55,6 @@ public class User {
     @Column(nullable = true, unique = true)
     private String showName;
 
-    @Column(nullable = false, unique = false)
+    @Column(unique = false)
     private TypeUser typeUser;
 }

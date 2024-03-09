@@ -28,7 +28,7 @@ public class Review {
                     )
             }
     )
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "id", updatable = false)
     private UUID id;
 
     @Column(name = "starts")
@@ -38,15 +38,13 @@ public class Review {
     private String positiveAspects;
 
     //Add activity connection
-    @Column(name="activity")
     @ManyToOne
-    @JoinColumn(name="activity_id", nullable=false)
+    @JoinColumn(name="activity_id")
     private Activity activity;
 
     // Add Visitor
-    @Column(name="visitor")
     @ManyToOne
-    @JoinColumn(name="visitor_id", nullable=false)
+    @JoinColumn(name="visitor_id")
     private Visitor visitor;
 
 }

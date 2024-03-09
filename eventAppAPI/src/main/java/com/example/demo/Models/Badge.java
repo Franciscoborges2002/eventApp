@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 @Entity
@@ -28,18 +29,21 @@ public class Badge {
                     )
             }
     )
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "id", updatable = false)
     private UUID id;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private  String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String description;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String image;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private int pointsToAtribute;
+
+    @ManyToMany(mappedBy = "badges")
+    private ArrayList<Visitor> visitors;
 }

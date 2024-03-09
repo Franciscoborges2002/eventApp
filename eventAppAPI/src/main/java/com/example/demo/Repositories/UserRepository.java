@@ -18,6 +18,4 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     @Query("Select p FROM User p WHERE p.showName = ?1")
     Optional<User> findUserByShowName(String showName);
 
-    Optional<User> findUsersByTypeUser(String typeUser);
-
 }

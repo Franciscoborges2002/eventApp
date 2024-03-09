@@ -37,7 +37,7 @@ public class InteractionService {
 
     public void addInteraction(Interaction interaction) {
    // é preciso alguma verificação ??? -
-        interactionRepository.save(Interaction);
+        interactionRepository.save(interaction);
     }
 
     public void deleteInteraction(UUID id) {

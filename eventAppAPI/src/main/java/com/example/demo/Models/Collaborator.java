@@ -18,8 +18,6 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Collaborator extends User{
-
-    @Column(name = "validations")
-    @OneToMany(mappedBy = "collaborator_id")
+    @OneToMany(mappedBy = "collaborator")
     private ArrayList<Validation> validations;
 }

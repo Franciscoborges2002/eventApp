@@ -30,8 +30,9 @@ public class TypeActivity {
                     )
             }
     )
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "id", updatable = false)
     private UUID id;
 
+    @Column(name = "name", updatable = false)
     private String name;
 }
