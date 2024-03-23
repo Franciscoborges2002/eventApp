@@ -1,9 +1,7 @@
 package com.example.demo.Services;
 
-import com.example.demo.Models.Badge;
-import com.example.demo.Models.Company;
+import com.example.demo.Models.Entity.Badge;
 import com.example.demo.Repositories.BadgeRepository;
-import com.example.demo.Repositories.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,6 @@
 package com.example.demo.Controllers;
 
-import com.example.demo.Models.Badge;
-import com.example.demo.Models.Review;
-import com.example.demo.Services.BadgeService;
+import com.example.demo.Models.Entity.Review;
 import com.example.demo.Services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

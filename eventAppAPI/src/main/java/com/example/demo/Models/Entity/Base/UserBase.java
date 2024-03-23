@@ -1,6 +1,9 @@
-package com.example.demo.Models;
+package com.example.demo.Models.Entity.Base;
 
-import jakarta.persistence.*;
+import com.example.demo.Enums.TypeUser;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,18 +11,13 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.UUID;
 
-@Entity
-@Table(name="activity")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Activity {
-
+public class UserBase {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
@@ -32,36 +30,25 @@ public class Activity {
                     )
             }
     )
+    //This type create an UUID from IP and timestamp can see in this link: https://thorben-janssen.com/generate-uuids-primary-keys-hibernate
+
     @Column(name = "id", updatable = false)
     private UUID id;
-
-    @Column(unique = true)
+    @Column(unique = false)
     private String name;
 
-    @Column(nullable = true, unique = false)
-    private String localization;
+    @Column(unique = false)
+    private String password;
 
     @Column(unique = true)
-    private int numParticipants;
+    private String email;
 
-    @Column(unique = true)
-    private boolean required;
+    @Column(nullable = true, unique = true)
+    private String linkPhoto;
 
-    @Column(unique = true)
-    private int maxNumParticipants;
+    @Column(nullable = true, unique = true)
+    private String showName;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(updatable = false)
-    private Date create_at;
-
-    // Relation to activity
-    @OneToMany(mappedBy = "activity")
-    private ArrayList<Validation> validations;
-
-    // Relation to Review
-    @OneToMany(mappedBy = "activity")
-    private ArrayList<Review> reviews;
-
-    //@Column(, unique = true)
-    //private List speakers;
+    @Column(unique = false)
+    private TypeUser typeUser;
 }

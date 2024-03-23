@@ -1,7 +1,5 @@
 version: '3.8'
 
-name: event_app
-
 services:
   db-postgres:
     container_name: database

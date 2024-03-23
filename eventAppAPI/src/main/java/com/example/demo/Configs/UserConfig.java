@@ -1,7 +1,7 @@
 package com.example.demo.Configs;
 
 import com.example.demo.Enums.TypeUser;
-import com.example.demo.Models.User;
+import com.example.demo.Models.Entity.Base.UserBase;
 import com.example.demo.Repositories.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +13,7 @@ public class UserConfig {
     @Bean
     CommandLineRunner initiateUser(UserRepository repository) {
         return args -> {
-            User user = new User();
+            UserBase user = new UserBase();
             user.setName("Francisco");
             user.setPassword("olaaa");
             user.setEmail("a@a.com");

@@ -1,6 +1,6 @@
 package com.example.demo.Configs;
 
-import com.example.demo.Models.Validation;
+import com.example.demo.Models.Entity.Validation;
 import com.example.demo.Repositories.ValidationRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;

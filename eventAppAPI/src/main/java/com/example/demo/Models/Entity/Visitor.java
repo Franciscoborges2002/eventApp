@@ -1,5 +1,6 @@
-package com.example.demo.Models;
+package com.example.demo.Models.Entity;
 
+import com.example.demo.Models.Entity.Base.UserBase;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Visitor extends User {
+public class Visitor extends UserBase {
     @Column(name="pontos")
     private int points;
     @Column(name="linkedin")

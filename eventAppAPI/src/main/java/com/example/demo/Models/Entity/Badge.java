@@ -1,4 +1,4 @@
-package com.example.demo.Models;
+package com.example.demo.Models.Entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,15 +7,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 @Entity
-@Table(name = "review")
+@Table(name = "badge")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Review {
+public class Badge {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
@@ -31,20 +32,18 @@ public class Review {
     @Column(name = "id", updatable = false)
     private UUID id;
 
-    @Column(name = "starts")
-    private double starts;
+    @Column(unique = true)
+    private  String name;
 
-    @Column(name = "positiveAspects")
-    private String positiveAspects;
+    @Column(unique = true)
+    private String description;
 
-    //Add activity connection
-    @ManyToOne
-    @JoinColumn(name="activity_id")
-    private Activity activity;
+    @Column(unique = true)
+    private String image;
 
-    // Add Visitor
-    @ManyToOne
-    @JoinColumn(name="visitor_id")
-    private Visitor visitor;
+    @Column(unique = true)
+    private int pointsToAtribute;
 
+    @ManyToMany(mappedBy = "badges")
+    private ArrayList<Visitor> visitors;
 }

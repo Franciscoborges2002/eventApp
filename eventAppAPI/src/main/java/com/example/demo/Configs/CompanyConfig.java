@@ -1,6 +1,6 @@
 package com.example.demo.Configs;
 
-import com.example.demo.Models.Company;
+import com.example.demo.Models.Entity.Company;
 import com.example.demo.Repositories.CompanyRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;

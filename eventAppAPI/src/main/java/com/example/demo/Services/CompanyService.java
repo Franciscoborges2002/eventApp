@@ -1,9 +1,9 @@
 package com.example.demo.Services;
 
 import com.example.demo.Enums.TypeContract;
-import com.example.demo.Models.Company;
-import com.example.demo.Models.Interaction;
-import com.example.demo.Models.Visitor;
+import com.example.demo.Models.Entity.Company;
+import com.example.demo.Models.Entity.Interaction;
+import com.example.demo.Models.Entity.Visitor;
 import com.example.demo.Repositories.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

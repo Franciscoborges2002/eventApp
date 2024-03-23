@@ -1,6 +1,6 @@
-package com.example.demo.Models;
+package com.example.demo.Models.Entity;
 
-import jakarta.persistence.Column;
+import com.example.demo.Models.Entity.Base.UserBase;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Collaborator extends User{
+public class Collaborator extends UserBase {
     @OneToMany(mappedBy = "collaborator")
     private ArrayList<Validation> validations;
 }

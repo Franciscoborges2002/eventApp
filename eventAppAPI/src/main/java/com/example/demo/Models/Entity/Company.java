@@ -1,4 +1,4 @@
-package com.example.demo.Models;
+package com.example.demo.Models.Entity;
 
 import com.example.demo.Enums.TypeContract;
 import jakarta.persistence.*;
@@ -10,7 +10,6 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -76,5 +75,6 @@ public class Company {
     @OneToMany(mappedBy = "company")
     private ArrayList<Interaction> interactions;
 
-    //it remains do the connection to collaborators
+    @OneToMany(mappedBy = "agent")
+    private ArrayList<Agent> agents;
 }

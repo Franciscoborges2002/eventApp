@@ -1,7 +1,6 @@
 package com.example.demo.Services;
 
-import com.example.demo.Models.Interaction;
-import com.example.demo.Models.Interaction;
+import com.example.demo.Models.Entity.Interaction;
 import com.example.demo.Repositories.InteractionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

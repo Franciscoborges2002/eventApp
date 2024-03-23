@@ -1,7 +1,6 @@
 package com.example.demo.Controllers;
 
-import com.example.demo.Models.User;
-import com.example.demo.Models.Validation;
+import com.example.demo.Models.Entity.Validation;
 import com.example.demo.Services.ValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

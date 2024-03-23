@@ -1,10 +1,7 @@
 package com.example.demo.Repositories;
 
-import com.example.demo.Enums.TypeContract;
-import com.example.demo.Models.Badge;
-import com.example.demo.Models.Company;
+import com.example.demo.Models.Entity.Badge;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 import java.util.UUID;

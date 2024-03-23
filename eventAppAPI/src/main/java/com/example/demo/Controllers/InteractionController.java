@@ -1,7 +1,6 @@
 package com.example.demo.Controllers;
 
-import com.example.demo.Models.Interaction;
-import com.example.demo.Services.InteractionService;
+import com.example.demo.Models.Entity.Interaction;
 import com.example.demo.Services.InteractionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

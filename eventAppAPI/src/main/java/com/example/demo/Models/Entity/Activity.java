@@ -1,4 +1,4 @@
-package com.example.demo.Models;
+package com.example.demo.Models.Entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,24 +6,26 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "badge")
+@Table(name="activity")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Badge {
+public class Activity {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator",
             parameters = {
-                    @org.hibernate.annotations.Parameter(
+                    @Parameter(
                             name = "uuid_gen_strategy_class",
                             value = "org.hibernate.id.uuid.CustomVersionOneStrategy"
                     )
@@ -33,17 +35,32 @@ public class Badge {
     private UUID id;
 
     @Column(unique = true)
-    private  String name;
+    private String name;
+
+    @Column(nullable = true, unique = false)
+    private String localization;
 
     @Column(unique = true)
-    private String description;
+    private int numParticipants;
 
     @Column(unique = true)
-    private String image;
+    private boolean required;
 
     @Column(unique = true)
-    private int pointsToAtribute;
+    private int maxNumParticipants;
 
-    @ManyToMany(mappedBy = "badges")
-    private ArrayList<Visitor> visitors;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(updatable = false)
+    private Date create_at;
+
+    // Relation to activity
+    @OneToMany(mappedBy = "activity")
+    private ArrayList<Validation> validations;
+
+    // Relation to Review
+    @OneToMany(mappedBy = "activity")
+    private ArrayList<Review> reviews;
+
+    //@Column(, unique = true)
+    //private List speakers;
 }

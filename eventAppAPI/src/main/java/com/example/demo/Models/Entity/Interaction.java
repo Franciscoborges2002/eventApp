@@ -1,4 +1,4 @@
-package com.example.demo.Models;
+package com.example.demo.Models.Entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,25 +6,25 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.UuidGenerator;
+import org.hibernate.annotations.Parameter;
 
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name="validation" )
+@Table(name="interaction" )
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Validation {
+public class Interaction {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator",
             parameters = {
-                    @org.hibernate.annotations.Parameter(
+                    @Parameter(
                             name = "uuid_gen_strategy_class",
                             value = "org.hibernate.id.uuid.CustomVersionOneStrategy"
                     )
@@ -35,22 +35,15 @@ public class Validation {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(updatable = false)
-    private Date validationDateTime;
+    private Date interactionDateTime;
 
-    //Add activity connection
+    //Add company connection
     @ManyToOne
-    @JoinColumn(name="activity_id")
-    private Activity activity;
+    @JoinColumn(name="company_id")
+    private Company company;
 
-
-    //Add user connection
     // Add Visitor
     @ManyToOne
     @JoinColumn(name="visitor_id")
     private Visitor visitor;
-
-    //Add person who read the qr cod | collaborator connection
-    @ManyToOne
-    @JoinColumn(name="collaborator_id")
-    private Collaborator collaborator;
 }
